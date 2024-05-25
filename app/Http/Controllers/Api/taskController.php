@@ -32,10 +32,10 @@ class TaskController extends Controller
 
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
-            'userID' => 'required',
-            'taskName' => 'required|email',
-            'description ' => 'required',
-            'status' => 'required'
+            'idUser' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'idStatus' => 'required'
         ]);
 
         if($validator->fails()){
@@ -50,8 +50,31 @@ class TaskController extends Controller
         $task = Task::Create($request->all());
         return response()->json([
             'message'=> 'task crated',
-            $task
+            'task' => $task
         ], 201);
+    }
+
+    public function destroy(){
+        return "destroy";
+    }
+
+    public function getWhere($nombreCol, $valor){
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $task = Task::where($nombreCol, $valor)->get();
+            return $task;
+        }
+        
+        return response()->json([
+            'message' => 'method not valid'
+        ], 500);
+    }
+
+    public function update(){
+        return "updateOne";
+    }
+
+    public function updateParcial(){
+        return "updateParcial";
     }
 }
 

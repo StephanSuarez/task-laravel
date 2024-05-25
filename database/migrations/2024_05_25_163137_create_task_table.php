@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('task', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('userID');
-            $table->string('taskName');
+            $table->string('idUser');
+            $table->string('title');
             $table->string('description');
-            $table->string('status');
+            $table->string('idStatus');
             $table->timestamps();
         });
     }

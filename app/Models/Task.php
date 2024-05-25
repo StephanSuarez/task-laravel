@@ -12,9 +12,9 @@ class Task extends Model
     protected $table = 'task';
 
     protected $fillable = [
-        'userID',
-        'taskName',
+        'idUser',
+        'title',
         'description',
-        'status'
+        'idStatus'
     ];
 }
